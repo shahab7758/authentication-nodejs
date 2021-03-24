@@ -2,6 +2,7 @@ const express = require("express")
 const app = express()
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const postRoute = require('./posts')
 
 dotenv.config()
 
@@ -16,6 +17,7 @@ con.on('open', () => {
 const authRoute = require('./routes/auth')
 app.use(express.json())
 app.use('/api/user', authRoute)
+app.use('/api/posts', postRoute)
 
 const PORT = 4000;
 app.listen(PORT, () => {
